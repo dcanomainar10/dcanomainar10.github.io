@@ -1,19 +1,21 @@
-var countDownDate = new Date(2022, 11, 25, 19, 0, 0).getTime();
-
 var x = setInterval(function() {
-  var now = new Date().getTime();
+  const date_future = new Date(2022, 11, 25, 19, 30, 0, 0);
+  const date_now = new Date();
 
-  var distance = countDownDate - now;
+  seconds = Math.floor((date_future - (date_now))/1000);
+  minutes = Math.floor(seconds/60);
+  hours = Math.floor(minutes/60);
+  days = Math.floor(hours/24);
+  
+  hours = hours-(days*24);
+  minutes = minutes-(days*24*60)-(hours*60);
+  seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 10 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  days = Math.floor(days/11);
 
-  document.getElementById("main").innerHTML = days + " dias " + hours + " horas "
-  + minutes + " minutos " + seconds + " segundos";
+  document.getElementById("main").innerHTML = days + " dias " + hours + " horas " + minutes + " minutos " + seconds + " segundos";
  
-  if (distance < 0) {
+  if (diffTime < 0) {
     clearInterval(x);
     document.getElementById("main").innerHTML = "Llego la hora";
   }
