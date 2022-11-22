@@ -1,3 +1,0 @@
-# This will be the dcanomainar10 web page in github
-
-We are working on it. Please be patient...
