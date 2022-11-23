@@ -1,5 +1,5 @@
 var x = setInterval(function() {
-  const date_future = new Date(2022, 11, 25, 19, 30, 0, 0);
+  const date_future = new Date(2022, 11, 23, 16, 00, 0, 0);
   const date_now = new Date();
 
   seconds = Math.floor((date_future - (date_now))/1000);
@@ -11,7 +11,7 @@ var x = setInterval(function() {
   minutes = minutes-(days*24*60)-(hours*60);
   seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
 
-  days = Math.floor(days/11);
+  days = Math.floor(days/13);
 
   document.getElementById("main").innerHTML = days + " dias " + hours + " horas " + minutes + " minutos " + seconds + " segundos";
  
