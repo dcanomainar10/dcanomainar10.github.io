@@ -144,6 +144,22 @@
         .cerrar-menu {
             display: none;
         }
+        #language-selector {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007acc;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        #language-selector option {
+            background-color: white;
+            color: black;
+        }
+        .nav-list li select {
+                padding-bottom: 10px;
+            }
         @media screen and (max-width: 1050px) {
             .abrir-menu,
             .cerrar-menu {
@@ -181,7 +197,6 @@
             .nav-list li a {
                 color: #ecececec;
             }
-
             .abrir-menu i {
                 color: #ecececec;
             }
@@ -199,21 +214,27 @@
         <nav class="nav" id="nav">
             <button class="cerrar-menu" id="cerrar"><i class="fab fa-x"></i></button>
             <ul class="nav-list">
-                <li><a href="#about">About me</a></li>
-                <li><a href="#stack">Technical Skills</a></li>
-                <li><a href="#interests">Interests</a></li>
-                <li><a href="#contact">Contact Info</a></li>
+                <li><a href="#about" data-translate="about_me">About me</a></li>
+                <li><a href="#stack" data-translate="technical_skills">Technical Skills</a></li>
+                <li><a href="#interests" data-translate="interests">Interests</a></li>
+                <li><a href="#contact" data-translate="contact_info">Contact Info</a></li>
+                <li>
+                    <select id="language-selector">
+                        <option value="en">🇬🇧 English</option>
+                        <option value="es">🇪🇸 Español</option>
+                    </select>
+                </li>
             </ul>
         </nav>
     </header>
     
     <section id="about" class="section">
-        <h2>About me</h2>
-        <p class="text-left">Software developer with over 8 years of experience, specializing in backend with .NET and C#. I have worked in Agile environments, building scalable and optimized solutions, with a strong foundation in software architecture and databases. Throughout my career, I have worked both in large consulting firms and small tech companies, participating in projects of various complexity and scope. I am passionate about technological challenges and continuous improvement, always seeking to add value both technically and organizationally to ambitious and innovative projects.</p>
+        <h2 data-translate="about_me">About me</h2>
+        <p class="text-left" data-translate="about_me_text">Software developer with over 8 years of experience, specializing in backend with .NET and C#. I have worked in Agile environments, building scalable and optimized solutions, with a strong foundation in software architecture and databases. Throughout my career, I have worked both in large consulting firms and small tech companies, participating in projects of various complexity and scope. I am passionate about technological challenges and continuous improvement, always seeking to add value both technically and organizationally to ambitious and innovative projects.</p>
     </section>
 
     <section id="stack" class="section">
-        <h2>Technical Skills</h2>
+        <h2 data-translate="technical_skills">Technical Skills</h2>
         <div class="skills-container">
             <div class="skill-box">
                 <div class="skill-name">C# / .NET Core</div>
@@ -259,7 +280,7 @@
     </section>
 
     <section id="interests" class="section">
-        <h2>Interests</h2>
+        <h2 data-translate="interests">Interests</h2>
         <div class="skills-container">
             <div class="skill-box">
                 <div class="skill-name">Good Development Practices</div>
@@ -295,7 +316,7 @@
     </section>
     
     <section id="contact" class="section">
-        <h2>Contact Info</h2>
+        <h2 data-translate="contact_info">Contact Info</h2>
         <div class="contact-icons">
             <a href="https://github.com/dcanomainar10" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/feed/" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -312,6 +333,11 @@
         const cerrar = document.querySelector("#cerrar");
         const navLinks = document.querySelectorAll(".nav-list a");
 
+        const translations = {
+            en: {},
+            es: {}
+        };
+
         abrir.addEventListener("click", () => {
             nav.classList.add("visible");
         })
@@ -326,7 +352,28 @@
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
+        async function loadTranslations() {
+            const [en, es] = await Promise.all([
+                fetch('en.json').then(response => response.json()),
+                fetch('es.json').then(response => response.json())
+            ]);
+            translations.en = en;
+            translations.es = es;
+        }
+
+        function translatePage(language) {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translations[language][key];
+            });
+        }
+
+        document.getElementById('language-selector').addEventListener('change', (event) => {
+            const language = event.target.value;
+            translatePage(language);
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
             const sections = document.querySelectorAll(".section");
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -337,6 +384,9 @@
             }, { threshold: 0.2 });
             
             sections.forEach(section => observer.observe(section));
+
+            await loadTranslations();
+            translatePage('en'); // Default language
         });
     </script>
 </body>
