@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Desarrollador</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <title>Portfolio - Daniel C. Mainar</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
     <link
         rel="stylesheet"
@@ -14,104 +12,190 @@
         referrerpolicy="no-referrer"
     />
     <style>
+        * {
+            margin: 5;
+            padding: 5;
+            box-sizing: border-box;
+        }
         body {
-    font-family: 'Fira Code', monospace;
-    background-color: #f0f0f0;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-header {
-    background-color: #007acc;
-    padding: 20px;
-    color: white;
-}
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-.section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease-in-out;
-    padding: 50px 20px;
-    background: white;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-.section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-.skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-.skill-box {
-    width: 300px;
-    text-align: left;
-}
-.skill-name {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-.skill-bar {
-    height: 10px;
-    background: #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-}
-.skill-progress {
-    height: 100%;
-    width: 0;
-    background: #007acc;
-    transition: width 1.5s ease-in-out;
-}
-.skill-progress-orange {
-    height: 100%;
-    width: 0;
-    background: #FF8533;
-    transition: width 1.5s ease-in-out;
-}
-.skill-progress-red {
-    height: 100%;
-    width: 0;
-    background: #cc5200;
-    transition: width 1.5s ease-in-out;
-}
-.contact-icons a {
-    margin: 10px;
-    font-size: 24px;
-    color: #007acc;
-    text-decoration: none;
-}
-footer {
-    background: #007acc;
-    padding: 10px;
-    color: white;
-    margin-top: 20px;
-}
+            font-family: 'Fira Code', monospace;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            color: white;
+            background-color: #007acc;
+        }
+        .logo {
+            max-width: 5rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: ecececec!;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-in-out;
+            padding: 50px 20px;
+            background: white;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .skill-box {
+            width: 300px;
+            text-align: left;
+        }
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .skill-bar {
+            height: 10px;
+            background: #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            width: 0;
+            background: #007acc;
+            transition: width 1.5s ease-in-out;
+        }
+        .skill-progress-orange {
+            height: 100%;
+            width: 0;
+            background: #FF8533;
+            transition: width 1.5s ease-in-out;
+        }
+        .skill-progress-red {
+            height: 100%;
+            width: 0;
+            background: #cc5200;
+            transition: width 1.5s ease-in-out;
+        }
+        .contact-icons a {
+            margin: 10px;
+            font-size: 24px;
+            color: #007acc;
+            text-decoration: none;
+        }
+        footer {
+            background: #007acc;
+            padding: 10px;
+            color: white;
+            margin-top: 20px;
+        }
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        .menu-icon span {
+            display: block;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+        }
+        .nav-list {
+            list-style-type: none;
+            display: flex;
+            gap: 1rem;
+        }
+        .nav-list li a {
+            text-decoration: none;
+            color: white;
+        }
+        .abrir-menu,
+        .cerrar-menu {
+            display: none;
+        }
+        @media screen and (max-width: 1050px) {
+            .abrir-menu,
+            .cerrar-menu {
+                display: block;
+                border: 0;
+                font-size: 1.25rem;
+                background-color: transparent;
+                cursor: pointer;
+            }
+            .abrir-menu {
+                color: #1c1c1c;
+            }
+            .cerrar-menu {
+                color: #ececec;
+                position:relative;
+            }
+            .nav { 
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 250px;
+                background-color: #1c1c1c;
+                padding: 2rem;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1000;
+            }
+            .nav.visible {
+                transform: translateX(0);
+            }
+            .nav-list {
+                flex-direction: column;
+                align-items: end;
+            }
+            .nav-list li a {
+                color: #ecececec;
+            }
+
+            .abrir-menu i {
+                color: #ecececec;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Daniel Cano Mainar</h1>
-        <h2>Software Developer</h2>
-        <nav>
-            <ul>
+        <img class="logo" src="logo1.png" alt="Logo"> 
+        <h2>Daniel Cano Mainar</h2> 
+        <button id="abrir" class="abrir-menu"><i class="fa fa-list"></i></button>
+        <nav class="nav" id="nav">
+            <button class="cerrar-menu" id="cerrar"><i class="fab fa-x"></i></button>
+            <ul class="nav-list">
                 <li><a href="#about">About me</a></li>
                 <li><a href="#stack">Technical Skills</a></li>
                 <li><a href="#interests">Interests</a></li>
@@ -219,7 +303,38 @@ footer {
     <footer>
         <p>&copy; 2025 - Daniel Cano Mainar</p>
     </footer>
-    
-    <script src="script.js"></script>
+    <script>
+        const nav = document.querySelector("#nav");
+        const abrir = document.querySelector("#abrir");
+        const cerrar = document.querySelector("#cerrar");
+        const navLinks = document.querySelectorAll(".nav-list a");
+
+        abrir.addEventListener("click", () => {
+            nav.classList.add("visible");
+        })
+
+        cerrar.addEventListener("click", () => {
+            nav.classList.remove("visible");
+        })
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("visible");
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll(".section");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
 </body>
 </html>
