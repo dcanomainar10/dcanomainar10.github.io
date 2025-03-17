@@ -365,8 +365,8 @@
 
         async function loadTranslations() {
             const [en, es] = await Promise.all([
-                fetch('en.json').then(response => response.json()),
-                fetch('es.json').then(response => response.json())
+                fetch('translate/en.json').then(response => response.json()),
+                fetch('translate/es.json').then(response => response.json())
             ]);
             translations.en = en;
             translations.es = es;
