@@ -148,18 +148,17 @@ footer {
 }
 .profile-image {
     position: relative;
-    margin-right: 15px;
-    margin-bottom: 15px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    left: 38%;
 }
 
 .profile-image img {
     position: absolute;
-    top: 0;
-    left:50%;
     margin-right: 15px;
     margin-bottom: 15px;
     border-radius: 50%;
