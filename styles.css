@@ -1,0 +1,226 @@
+* {
+    margin: 5;
+    padding: 5;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Fira Code', monospace;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    color: white;
+    background-color: #007acc;
+}
+.logo {
+    max-width: 5rem;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+nav ul li a {
+    color: ecececec!;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-in-out;
+    padding: 50px 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.skill-box {
+    width: 300px;
+    text-align: left;
+}
+.skill-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.skill-bar {
+    height: 10px;
+    background: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.skill-progress {
+    height: 100%;
+    width: 0;
+    background: #007acc;
+    transition: width 1.5s ease-in-out;
+}
+.skill-progress-orange {
+    height: 100%;
+    width: 0;
+    background: #FF8533;
+    transition: width 1.5s ease-in-out;
+}
+.skill-progress-red {
+    height: 100%;
+    width: 0;
+    background: #cc5200;
+    transition: width 1.5s ease-in-out;
+}
+.contact-icons a {
+    margin: 10px;
+    font-size: 24px;
+    color: #007acc;
+    text-decoration: none;
+}
+footer {
+    background: #007acc;
+    padding: 10px;
+    color: white;
+    margin-top: 20px;
+}
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+.menu-icon span {
+    display: block;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+}
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+}
+.nav-list li a {
+    text-decoration: none;
+    color: white;
+}
+.abrir-menu,
+.cerrar-menu {
+    display: none;
+}
+#language-selector {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007acc;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#language-selector option {
+    background-color: white;
+    color: black;
+}
+.nav-list li select {
+        padding-bottom: 10px;
+}
+.profile-image {
+    position: relative;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    left: 38%;
+}
+
+.profile-image img {
+    position: absolute;
+    top: 0;
+    left:50%;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.profile-image .hover-image {
+    opacity: 0;
+}
+
+.profile-image:hover .hover-image {
+    opacity: 1;
+}
+
+.profile-image:hover .default-image {
+    opacity: 0;
+}
+
+@media screen and (max-width: 1050px) {
+    .abrir-menu,
+    .cerrar-menu {
+        display: block;
+        border: 0;
+        font-size: 1.25rem;
+        background-color: transparent;
+        cursor: pointer;
+    }
+    .abrir-menu {
+        color: #1c1c1c;
+    }
+    .cerrar-menu {
+        color: #ececec;
+    }
+    .nav { 
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 250px;
+        background-color: #1c1c1c;
+        padding: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+    }
+    .nav.visible {
+        transform: translateX(0);
+    }
+    .nav-list {
+        flex-direction: column;
+        align-items: end;
+    }
+    .nav-list li a {
+        color: #ecececec;
+    }
+    .abrir-menu i {
+        color: #ecececec;
+    }
+    .section p {
+        text-align:justify !important;
+    }
+}
